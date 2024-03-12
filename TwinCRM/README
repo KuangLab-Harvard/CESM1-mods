@@ -1,0 +1,10 @@
+These SourceMods are for running the control run with multiple CRM copies (currently set up to run 2 CRM copies). Output from this run is only from the first CRM -- silent CRM information saved in restart files for new runs. 
+
+Some tips:
+    Save inithist daily
+    Save restart files for each day you want to initialize from the silent CRM
+    in env_run.xml, make sure restarts don't get deleted at end of run: 
+        DOUT_S=FALSE
+        DOUT_S_SAVE_INT_REST_FILES=TRUE
+
+Look at prep_twin_run.sh for how to use restart files to initiate run from silent CRM

@@ -1,0 +1,16 @@
+In addition to changing SourceMods:
+
+1. Make sure physpkg.F90 in SourceMods/src.cam/ is pointing to the right reanalysis files that you want to replay to.
+    Double check the year align is correct if not running FAMIP
+    Use physpkg.F90-spcam if you're running SPCAM 
+2. Add to user_nl_cam:
+    fincl3 = 'SDIFF:I','UDIFF:I','VDIFF:I','QDIFF:I'
+    mfilt = 1,1,1
+    nhtfrq = 0,-24,-3
+(only the third number is important for saving tendencies in mfilt and nhtfrq)
+3. Edit env_run.xml:
+    RUN_TYPE=STARTUP
+    STOP_N=double the length of your desired run
+    GLC_NCPL=4
+    ROF_NCPL=4
+4. Change $CASENAME.run so that --mem-per-cpu=4000
